@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Anexo extends Model
 {
     use HasFactory;
-
+    protected $table = 'anexos';
     protected $fillable = [
         'solicitacao_id',
         'arquivo',

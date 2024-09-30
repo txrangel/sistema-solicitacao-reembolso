@@ -9,6 +9,7 @@ class StatusSolicitacao extends Model
 {
     use HasFactory;
 
+    protected $table = 'status_solicitacoes';
     protected $fillable = ['descricao'];
 
     public function solicitacoes()
