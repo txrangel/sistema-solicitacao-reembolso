@@ -15,7 +15,7 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         $usuario = [
-            "nome" => "Administrador",
+            "name" => "Administrador",
             "email" => ENV('EMAIL_ADMIN'),
             'password'=> Hash::make(ENV('SENHA_ADMIN')),
         ];
