@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cabecalho_solicitacoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('setor_id')->constrained('setores')->onDelete('cascade');
             $table->foreignId('status_solicitacao_id')->constrained('status_solicitacoes');
             $table->text('observacao')->nullable();

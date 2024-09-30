@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('historico_aprovacoes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('solicitacao_id')->constrained('cabecalho_solicitacoes')->onDelete('cascade');
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('status_anterior')->nullable()->constrained('status_solicitacoes');
             $table->foreignId('status_atual')->constrained('status_solicitacoes');
             $table->text('observacao')->nullable();
