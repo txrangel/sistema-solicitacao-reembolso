@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
+    Route::get('/usuario/create', [UserController::class, 'create'])->name('usuario.create');
+    Route::post('/usuario/store', [UserController::class, 'store'])->name('usuario.store');
+    Route::get('/usuario/{id}/edit', [UserController::class, 'edit'])->name('usuario.edit');
+    Route::put('/usuario/{id}/update', [UserController::class, 'update'])->name('usuario.update');
+    Route::delete('/usuario/{id}/destroy', [UserController::class, 'destroy'])->name('usuario.destroy');
 
     Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil.index');
     Route::get('/perfil/create', [PerfilController::class, 'create'])->name('perfil.create');
