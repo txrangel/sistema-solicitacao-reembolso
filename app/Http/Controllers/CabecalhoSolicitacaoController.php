@@ -19,7 +19,7 @@ class CabecalhoSolicitacaoController extends Controller
     {
         $setores = Setor::all();
         $status = StatusSolicitacao::all();
-        return view('solicitacoes.create', compact('setores', 'status'));
+        return view('solicitacoes.form', compact('setores', 'status'));
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class CabecalhoSolicitacaoController extends Controller
     {
         $setores = Setor::all();
         $status = StatusSolicitacao::all();
-        return view('solicitacoes.edit', compact('solicitacao', 'setores', 'status'));
+        return view('solicitacoes.form', compact('solicitacao', 'setores', 'status'));
     }
 
     public function update(Request $request, CabecalhoSolicitacao $solicitacao)

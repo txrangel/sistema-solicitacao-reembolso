@@ -15,7 +15,7 @@ class PermissaoController extends Controller
 
     public function create()
     {
-        return view('permissoes.create');
+        return view('permissoes.form');
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class PermissaoController extends Controller
 
     public function edit(Permissao $permissao)
     {
-        return view('permissoes.edit', compact('permissao'));
+        return view('permissoes.form', compact('permissao'));
     }
 
     public function update(Request $request, Permissao $permissao)

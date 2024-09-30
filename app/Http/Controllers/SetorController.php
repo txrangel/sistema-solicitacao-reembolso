@@ -15,7 +15,7 @@ class SetorController extends Controller
 
     public function create()
     {
-        return view('setores.create');
+        return view('setores.form');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class SetorController extends Controller
 
     public function edit(Setor $setor)
     {
-        return view('setores.edit', compact('setor'));
+        return view('setores.form', compact('setor'));
     }
 
     public function update(Request $request, Setor $setor)

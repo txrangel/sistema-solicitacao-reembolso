@@ -15,7 +15,7 @@ class StatusSolicitacaoController extends Controller
 
     public function create()
     {
-        return view('status.create');
+        return view('status.form');
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class StatusSolicitacaoController extends Controller
 
     public function edit(StatusSolicitacao $status)
     {
-        return view('status.edit', compact('status'));
+        return view('status.form', compact('status'));
     }
 
     public function update(Request $request, StatusSolicitacao $status)

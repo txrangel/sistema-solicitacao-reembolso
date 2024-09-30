@@ -12,7 +12,7 @@ class ItemSolicitacaoController extends Controller
     public function create(CabecalhoSolicitacao $solicitacao)
     {
         $tipos = TipoItemSolicitacao::all();
-        return view('itens.create', compact('solicitacao', 'tipos'));
+        return view('itens.form', compact('solicitacao', 'tipos'));
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class ItemSolicitacaoController extends Controller
 
         ItemSolicitacao::create($request->all());
 
-        return redirect()->route('solicitacoes.edit', $request->cabecalho_solicitacao_id)
+        return redirect()->route('solicitacoes.form', $request->cabecalho_solicitacao_id)
                          ->with('success', 'Item adicionado com sucesso.');
     }
 

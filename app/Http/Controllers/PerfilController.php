@@ -15,7 +15,7 @@ class PerfilController extends Controller
 
     public function create()
     {
-        return view('perfis.create');
+        return view('perfis.form');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class PerfilController extends Controller
 
     public function edit(Perfil $perfil)
     {
-        return view('perfis.edit', compact('perfil'));
+        return view('perfis.form', compact('perfil'));
     }
 
     public function update(Request $request, Perfil $perfil)
