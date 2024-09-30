@@ -12,36 +12,56 @@ class PerfilController extends Controller
         $perfis = Perfil::all();
         return view('perfis.index', compact('perfis'));
     }
-
     public function create()
     {
         return view('perfis.form');
     }
-
-    public function store(Request $request)
-    {
-        $request->validate(['nome' => 'required']);
-        Perfil::create($request->all());
-
-        return redirect()->route('perfil.index')->with('success', 'Perfil criado com sucesso.');
-    }
-
     public function edit(Perfil $perfil)
     {
         return view('perfis.form', compact('perfil'));
     }
-
+    public function store(Request $request)
+    {
+        try{
+            $request->validate(['nome' => 'required']);
+            Perfil::create($request->all());
+            return redirect()->route('perfil.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Perfil criado com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
+    }
     public function update(Request $request, Perfil $perfil)
     {
-        $request->validate(['nome' => 'required']);
-        $perfil->update($request->all());
-
-        return redirect()->route('perfil.index')->with('success', 'Perfil atualizado com sucesso.');
+        try{
+            $request->validate(['nome' => 'required']);
+            $perfil->update($request->all());
+            return redirect()->route('perfil.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Perfil atualizado com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
-
     public function destroy(Perfil $perfil)
     {
-        $perfil->delete();
-        return redirect()->route('perfil.index')->with('success', 'Perfil excluído com sucesso.');
+        try{
+            $perfil->delete();
+            return redirect()->route('perfil.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Perfil excluído com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
 }

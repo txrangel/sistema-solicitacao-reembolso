@@ -14,26 +14,39 @@ class ItemSolicitacaoController extends Controller
         $tipos = TipoItemSolicitacao::all();
         return view('itens.form', compact('solicitacao', 'tipos'));
     }
-
     public function store(Request $request)
     {
-        $request->validate([
-            'cabecalho_solicitacao_id' => 'required',
-            'tipo_item_id' => 'required',
-            'quantidade' => 'required|numeric',
-            'valor_unitario' => 'required|numeric',
-            'dentro_limite' => 'required|boolean',
-        ]);
-
-        ItemSolicitacao::create($request->all());
-
-        return redirect()->route('solicitacao.form', $request->cabecalho_solicitacao_id)
-                         ->with('success', 'Item adicionado com sucesso.');
+        try{
+            $request->validate([
+                'cabecalho_solicitacao_id' => 'required',
+                'tipo_item_id' => 'required',
+                'quantidade' => 'required|numeric',
+                'valor_unitario' => 'required|numeric',
+                'dentro_limite' => 'required|boolean',
+            ]);
+            ItemSolicitacao::create($request->all());
+            return redirect()->route('solicitacao.form', $request->cabecalho_solicitacao_id)
+                ->with('status', 'sucess')
+                ->with('message', 'Item adicionado com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
-
     public function destroy(ItemSolicitacao $itemSolicitacao)
     {
-        $itemSolicitacao->delete();
-        return back()->with('success', 'Item excluído com sucesso.');
+        try{
+            $itemSolicitacao->delete();
+            return back()
+                ->with('status', 'sucess')
+                ->with('message', 'Item excluído com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
 }

@@ -12,38 +12,56 @@ class StatusSolicitacaoController extends Controller
         $status = StatusSolicitacao::all();
         return view('status.index', compact('status'));
     }
-
     public function create()
     {
         return view('status.form');
     }
-
-    public function store(Request $request)
-    {
-        $request->validate(['descricao' => 'required']);
-
-        StatusSolicitacao::create($request->all());
-
-        return redirect()->route('status-solicitacao.index')->with('success', 'Status criado com sucesso.');
-    }
-
     public function edit(StatusSolicitacao $status)
     {
         return view('status.form', compact('status'));
     }
-
+    public function store(Request $request)
+    {
+        try{
+            $request->validate(['descricao' => 'required']);
+            StatusSolicitacao::create($request->all());
+            return redirect()->route('status-solicitacao.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Status criado com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
+    }
     public function update(Request $request, StatusSolicitacao $status)
     {
-        $request->validate(['descricao' => 'required']);
-
-        $status->update($request->all());
-
-        return redirect()->route('status-solicitacao.index')->with('success', 'Status atualizado com sucesso.');
+        try{
+            $request->validate(['descricao' => 'required']);
+            $status->update($request->all());
+            return redirect()->route('status-solicitacao.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Status atualizado com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
-
     public function destroy(StatusSolicitacao $status)
     {
-        $status->delete();
-        return redirect()->route('status-solicitacao.index')->with('success', 'Status excluído com sucesso.');
+        try{
+            $status->delete();
+            return redirect()->route('status-solicitacao.index')
+                ->with('status', 'sucess')
+                ->with('message', 'Status excluído com sucesso.');
+        }catch(\Exception $e){
+            return redirect()->back()
+                ->with('status', 'error')
+                ->with('message', 'Erro: '. $e->getMessage())
+                ->withInput();
+        }
     }
 }
