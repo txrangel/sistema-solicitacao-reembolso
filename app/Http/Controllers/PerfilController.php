@@ -23,7 +23,7 @@ class PerfilController extends Controller
         $request->validate(['nome' => 'required']);
         Perfil::create($request->all());
 
-        return redirect()->route('perfis.index')->with('success', 'Perfil criado com sucesso.');
+        return redirect()->route('perfil.index')->with('success', 'Perfil criado com sucesso.');
     }
 
     public function edit(Perfil $perfil)
@@ -36,12 +36,12 @@ class PerfilController extends Controller
         $request->validate(['nome' => 'required']);
         $perfil->update($request->all());
 
-        return redirect()->route('perfis.index')->with('success', 'Perfil atualizado com sucesso.');
+        return redirect()->route('perfil.index')->with('success', 'Perfil atualizado com sucesso.');
     }
 
     public function destroy(Perfil $perfil)
     {
         $perfil->delete();
-        return redirect()->route('perfis.index')->with('success', 'Perfil excluído com sucesso.');
+        return redirect()->route('perfil.index')->with('success', 'Perfil excluído com sucesso.');
     }
 }

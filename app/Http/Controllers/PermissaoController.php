@@ -27,7 +27,7 @@ class PermissaoController extends Controller
 
         Permissao::create($request->all());
 
-        return redirect()->route('permissoes.index')->with('success', 'Permissão criada com sucesso.');
+        return redirect()->route('permissao.index')->with('success', 'Permissão criada com sucesso.');
     }
 
     public function edit(Permissao $permissao)
@@ -44,12 +44,12 @@ class PermissaoController extends Controller
 
         $permissao->update($request->all());
 
-        return redirect()->route('permissoes.index')->with('success', 'Permissão atualizada com sucesso.');
+        return redirect()->route('permissao.index')->with('success', 'Permissão atualizada com sucesso.');
     }
 
     public function destroy(Permissao $permissao)
     {
         $permissao->delete();
-        return redirect()->route('permissoes.index')->with('success', 'Permissão excluída com sucesso.');
+        return redirect()->route('permissao.index')->with('success', 'Permissão excluída com sucesso.');
     }
 }

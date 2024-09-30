@@ -34,7 +34,7 @@ class CabecalhoSolicitacaoController extends Controller
 
         CabecalhoSolicitacao::create($request->all());
 
-        return redirect()->route('solicitacoes.index')->with('success', 'Solicitação criada com sucesso.');
+        return redirect()->route('solicitacao.index')->with('success', 'Solicitação criada com sucesso.');
     }
 
     public function edit(CabecalhoSolicitacao $solicitacao)
@@ -55,12 +55,12 @@ class CabecalhoSolicitacaoController extends Controller
 
         $solicitacao->update($request->all());
 
-        return redirect()->route('solicitacoes.index')->with('success', 'Solicitação atualizada com sucesso.');
+        return redirect()->route('solicitacao.index')->with('success', 'Solicitação atualizada com sucesso.');
     }
 
     public function destroy(CabecalhoSolicitacao $solicitacao)
     {
         $solicitacao->delete();
-        return redirect()->route('solicitacoes.index')->with('success', 'Solicitação excluída com sucesso.');
+        return redirect()->route('solicitacao.index')->with('success', 'Solicitação excluída com sucesso.');
     }
 }

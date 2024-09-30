@@ -27,7 +27,7 @@ class ItemSolicitacaoController extends Controller
 
         ItemSolicitacao::create($request->all());
 
-        return redirect()->route('solicitacoes.form', $request->cabecalho_solicitacao_id)
+        return redirect()->route('solicitacao.form', $request->cabecalho_solicitacao_id)
                          ->with('success', 'Item adicionado com sucesso.');
     }
 

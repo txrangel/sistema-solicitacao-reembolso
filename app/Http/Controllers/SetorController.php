@@ -23,7 +23,7 @@ class SetorController extends Controller
         $request->validate(['nome' => 'required']);
         Setor::create($request->all());
 
-        return redirect()->route('setores.index')->with('success', 'Setor criado com sucesso.');
+        return redirect()->route('setor.index')->with('success', 'Setor criado com sucesso.');
     }
 
     public function edit(Setor $setor)
@@ -36,12 +36,12 @@ class SetorController extends Controller
         $request->validate(['nome' => 'required']);
         $setor->update($request->all());
 
-        return redirect()->route('setores.index')->with('success', 'Setor atualizado com sucesso.');
+        return redirect()->route('setor.index')->with('success', 'Setor atualizado com sucesso.');
     }
 
     public function destroy(Setor $setor)
     {
         $setor->delete();
-        return redirect()->route('setores.index')->with('success', 'Setor excluído com sucesso.');
+        return redirect()->route('setor.index')->with('success', 'Setor excluído com sucesso.');
     }
 }

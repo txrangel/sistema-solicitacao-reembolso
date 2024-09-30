@@ -24,7 +24,7 @@ class StatusSolicitacaoController extends Controller
 
         StatusSolicitacao::create($request->all());
 
-        return redirect()->route('status.index')->with('success', 'Status criado com sucesso.');
+        return redirect()->route('status-solicitacao.index')->with('success', 'Status criado com sucesso.');
     }
 
     public function edit(StatusSolicitacao $status)
@@ -38,12 +38,12 @@ class StatusSolicitacaoController extends Controller
 
         $status->update($request->all());
 
-        return redirect()->route('status.index')->with('success', 'Status atualizado com sucesso.');
+        return redirect()->route('status-solicitacao.index')->with('success', 'Status atualizado com sucesso.');
     }
 
     public function destroy(StatusSolicitacao $status)
     {
         $status->delete();
-        return redirect()->route('status.index')->with('success', 'Status excluído com sucesso.');
+        return redirect()->route('status-solicitacao.index')->with('success', 'Status excluído com sucesso.');
     }
 }
