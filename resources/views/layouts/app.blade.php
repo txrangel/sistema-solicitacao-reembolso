@@ -26,14 +26,9 @@
                     </div>
                 </header>
             @endisset
+            @include('components.alerts.all')
             <!-- Page Content -->
             <main class="min-h-min">
-                @if (session('status') === 'sucess')
-                    @include('components.alerts.sucess')
-                @endif
-                @if (session('status') === 'error')
-                    @include('components.alerts.error')
-                @endif
                 {{ $slot }}
             </main>
         </div>
